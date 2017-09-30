@@ -9,7 +9,7 @@ export class FotoService {
 
     http: Http;
     headers: Headers;
-    url: string = 'v1/fotos';
+    url: string = 'http://127.0.0.1:8080/api/fotos';
 
     constructor(http: Http) {
 
@@ -27,10 +27,9 @@ export class FotoService {
 
     findAll(offset: number = 0, limit: number = 10): Observable<FotoComponent[]> {
         return this.http
-          .get(`${this.url}?offset=${offset}&limit=${limit}`)
+          .get(`${this.url}/?offset=${offset}&limit=${limit}`)
           .map(response => response.json())
       }
-    
 
     cadastra(foto: FotoComponent): Observable<MensagemCadastro> {
 
